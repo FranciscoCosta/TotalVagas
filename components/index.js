@@ -1,7 +1,10 @@
 import ScreenHeaderBtn from "./header/ScreenHeaderBtn";
-import Hero from "./hero/Hero"
-
+import Hero from "./hero/Hero";
+import PopularJobs from "./popularJobs/PopularJobs";
+import Popularjobcard from "./popularjobscard/Popularjobcard";
 export {
     ScreenHeaderBtn,
-    Hero
+    Hero,
+    PopularJobs,
+    Popularjobcard,
 }
