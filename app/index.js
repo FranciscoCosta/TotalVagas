@@ -5,7 +5,7 @@ import { Stack, useRouter } from "expo-router";
 
 import { COLORS, SIZES, SHADOWS, FONT, icons, images } from "../constants";
 
-import { ScreenHeaderBtn, Hero, PopularJobs } from "../components/index";
+import { ScreenHeaderBtn, Hero, PopularJobs, NearbyJobs } from "../components/index";
 
 const Home = () => {
   const router = useRouter();
@@ -40,6 +40,7 @@ const Home = () => {
         </View>
         <Hero />
       <PopularJobs />
+      <NearbyJobs />
       </ScrollView>
     </SafeAreaView>
   );
