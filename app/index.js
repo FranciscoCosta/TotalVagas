@@ -5,7 +5,7 @@ import { Stack, useRouter } from "expo-router";
 
 import { COLORS, SIZES, SHADOWS, FONT, icons, images } from "../constants";
 
-import { ScreenHeaderBtn } from "../components/index";
+import { ScreenHeaderBtn, Hero } from "../components/index";
 
 const Home = () => {
   const router = useRouter();
@@ -37,8 +37,8 @@ const Home = () => {
             flex: 1,
             padding: SIZES.medium,
         }}>
-            <Text>Welcome</Text>
         </View>
+        <Hero />
       </ScrollView>
     </SafeAreaView>
   );
