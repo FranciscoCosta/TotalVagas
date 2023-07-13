@@ -11,13 +11,15 @@ import { ActivityIndicator } from "react-native-web";
 import useFetch from '../../hook/useFetch';
 
 const PopularJobs =()=> {
+    const router = useRouter();
 
     const { data, isLoading, error } = useFetch("search", {
         query: "React developer",
         num_pages: "1",
       });
 
-    const router = useRouter();
+
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -31,7 +33,7 @@ const PopularJobs =()=> {
                 <ActivityIndicator size="large" color={COLORS.primary} />
             ) : (
                 error ? (
-                    <Text>{error}</Text>
+                    <Text>Algo deu errado</Text>
                 ) : (
                     <FlatList
                     data={data}
