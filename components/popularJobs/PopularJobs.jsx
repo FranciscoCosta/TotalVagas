@@ -8,10 +8,16 @@ import { Popularjobcard } from "../index";
 import { COLORS , SIZES } from "../../constants/index";
 import { ActivityIndicator } from "react-native-web";
 
+import useFetch from '../../hook/useFetch';
+
 const PopularJobs =()=> {
+
+    const { data, isLoading, error } = useFetch("search", {
+        query: "React developer",
+        num_pages: "1",
+      });
+
     const router = useRouter();
-    const isLoading = false;
-    const error = false;
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -28,7 +34,7 @@ const PopularJobs =()=> {
                     <Text>{error}</Text>
                 ) : (
                     <FlatList
-                    data={[1,2,3,4,5,6,7,8,9,10]}
+                    data={data}
                     renderItem={({item})=>(
                         <Popularjobcard item={item}
                         />

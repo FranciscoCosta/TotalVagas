@@ -6,18 +6,32 @@ import { useRouter } from "expo-router";
 
 import styles from "./popularjobcard";
 
-const Popularjobcard = ({item})=> {
+const Popularjobcard = ({item, selectedJob , handleCardPress})=> {
     const router = useRouter();
     return (
-        <TouchableOpacity style={styles.container}>
-            {/* <Image style={styles.image} source={require("../../assets/images/1.png")}/> */}
-            <View style={styles.cardContent}>
-                <Text style={styles.title}>Desenvolvedor Fullstack</Text>
-                <Text style={styles.company}>Google</Text>
-                <Text style={styles.location}>São Paulo, SP</Text>
-                <Text style={styles.salary}>R$ 5.000,00</Text>
+        <TouchableOpacity 
+        style={styles.container(selectedJob, item)}
+        onPress={()=>handleCardPress(item)}
+        >
+            <TouchableOpacity style={styles.logoContainer(selectedJob, item)}>
+                <Image
+                source={{ uri: item?.employer_logo ? item.employer_logo : 'https://cdn-icons-png.flaticon.com/512/1465/1465405.png' }}
+                resizeMode="contain"
+                style={styles.logoImage}/>
+            </TouchableOpacity>
+            <Text style={styles.companyName} numberOfLines={1}>
+                {item?.employer_name}
+            </Text>
+            <View style={styles.infoContainer}>
+                <Text style={styles.jobName(selectedJob, item)} numberOfLines={1}>
+                    {item?.job_title}
+                </Text>
+                <Text style ={styles.location}>
+                    {item?.job_title}
+                </Text>
             </View>
-        </TouchableOpacity>)
+        </TouchableOpacity>
+        )
 }
 
 export default Popularjobcard;
