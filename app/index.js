@@ -9,7 +9,12 @@ import { ScreenHeaderBtn, Hero, PopularJobs, NearbyJobs } from "../components/in
 
 const Home = () => {
   const router = useRouter();
+
   
+  const handleCardPress = (item) => {
+    router.push(`/job-details/${item.job_id}`);
+    setSelectedJob(item.job_id);
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
