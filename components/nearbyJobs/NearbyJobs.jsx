@@ -13,7 +13,7 @@ import useFetch from '../../hook/useFetch';
 const NearbyJobs = () => {
 
     const { data, isLoading, error } = useFetch("search", {
-        query: "React developer",
+        query: "Desenvolvedor Belo Horizonte Brasil",
         num_pages: "1",
     });
 

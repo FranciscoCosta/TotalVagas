@@ -13,9 +13,9 @@ import { useRouter } from "expo-router";
 import styles from "./hero.style";
 import { icons, SIZES } from "../../constants";
 
-const jobsTypes = ["Tempo intregal", "Part-time", "Freelancer"];
+const jobsTypes = ["Front-end", "Back-end", "Full-stack"];
 
-const Hero = () => {
+const Hero = ({searchTearm,setsearchTearm,handleClick}) => {
   const router = useRouter();
   const [activeJobType, setActiveJobType] = useState("Tempo intregal");
 
@@ -24,22 +24,20 @@ const Hero = () => {
       <View style={styles.container}>
         <Text style={styles.username}>Olá Francisco Costa.</Text>
         <Text style={styles.message}>Encontra o trabalho para ti !</Text>
-
         <View style={styles.searchContainer}>
           <View style={styles.searchWrapper}>
             <TextInput
               style={styles.searchInput}
-              value=""
-              onChange={() => {}}
+              value={searchTearm}
+              onChangeText={(text) => setsearchTearm(text)}
               placeholder="Pesquisar"
             />
           </View>
-          <TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
+          <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
             <Image
               resizeMode="contain"
               style={styles.searchBtnImage}
               source={icons.search}
-              onPress={() => {}}
             ></Image>
           </TouchableOpacity>
         </View>

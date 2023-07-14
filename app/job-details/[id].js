@@ -15,6 +15,7 @@ const JobDetails = () => {
 // 
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const [refreshing, setRefreshing] = useState(false);
+  
   // console.log(router.setParams.Scopes[Global].location.pathname,"path");
 
 

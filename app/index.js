@@ -5,16 +5,16 @@ import { Stack, useRouter } from "expo-router";
 
 import { COLORS, SIZES, SHADOWS, FONT, icons, images } from "../constants";
 
-import { ScreenHeaderBtn, Hero, PopularJobs, NearbyJobs } from "../components/index";
+import {
+  ScreenHeaderBtn,
+  Hero,
+  PopularJobs,
+  NearbyJobs,
+} from "../components/index";
 
 const Home = () => {
   const router = useRouter();
-
-  
-  const handleCardPress = (item) => {
-    router.push(`/job-details/${item.job_id}`);
-    setSelectedJob(item.job_id);
-  };
+  const [searchTearm, setsearchTearm] = useState("");
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -30,23 +30,31 @@ const Home = () => {
             <ScreenHeaderBtn iconUrl={images.profile} dimension="100%" />
           ),
           headerTitleStyle: {
-            fontWeight: 'bold',
+            fontWeight: "bold",
             color: COLORS.primary,
           },
-          headerTitleAlign: 'center',
-        
+          headerTitleAlign: "center",
         }}
       ></Stack.Screen>
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{
+        <View
+          style={{
             flex: 1,
             padding: SIZES.medium,
-        }}>
-        </View>
-        <Hero />
-      <PopularJobs />
-      <NearbyJobs />
+          }}
+        ></View>
+        <Hero
+          searchTearm={searchTearm}
+          setsearchTearm={setsearchTearm}
+          handleClick={() => {
+            if (searchTearm.length > 0) {
+              router.push(`search/${searchTearm}`);
+            }
+          }}
+        />
+        <PopularJobs />
+        <NearbyJobs />
       </ScrollView>
     </SafeAreaView>
   );
