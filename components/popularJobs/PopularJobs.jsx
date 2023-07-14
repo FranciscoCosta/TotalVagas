@@ -15,7 +15,7 @@ const PopularJobs =()=> {
     const [selectedJob, setSelectedJob] = useState();
 
     const { data, isLoading, error } = useFetch("search", {
-        query: "React developer",
+        query: "React",
         num_pages: "1",
       });
 
