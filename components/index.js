@@ -7,6 +7,8 @@ import Nearbyjobcard from "./nearbyjobcard/Nearbyjobcard";
 import Company from "./company/Company";
 import JobsTabs from "./jobsTabs/JobsTabs";
 import Specifics from "./specifics/Specifics";
+import About from "./about/About";
+import Footer from "./footer/Footer";
 export {
     ScreenHeaderBtn,
     Hero,
@@ -17,4 +19,6 @@ export {
     JobsTabs,
     Company,
     Specifics,
+    About,
+    Footer,
 }

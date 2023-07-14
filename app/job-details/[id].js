@@ -1,34 +1,31 @@
 import { useState, useCallback, useEffect } from "react";
 import { Text, View, SafeAreaView, ActivityIndicator } from "react-native";
-import { Stack, useSearchParams, useRouter } from "expo-router";
+import { Stack,  useLocalSearchParams, useRouter } from "expo-router";
 import { COLORS, icons, SIZES } from "../../constants";
 import useFetch from "../../hook/useFetch";
 import { ScreenHeaderBtn } from "../../components";
 import { RefreshControl, ScrollView } from "react-native";
 
-import { JobsTabs, Company , Specifics} from "../../components";
+import { JobsTabs, Company, Specifics, About, Footer } from "../../components";
 
-const tabs = ["Sobre", "Requisitos", "Dia-a-dia"];
+const tabs = ["Sobre", "Requisitos", "Dia-a-dia", "Benificios"];
 
 const JobDetails = () => {
   const router = useRouter();
-  const params = useSearchParams();
-  let id = params.id;
-
-  const { data, isLoading, error, refetch } = useFetch("job-details", {
-    job_id: id,
-  });
-  console.log(data)
-
-  const [refreshing, setrefreshing] = useState(false);
+// 
   const [activeTab, setActiveTab] = useState(tabs[0]);
+  const [refreshing, setRefreshing] = useState(false);
+  // console.log(router.setParams.Scopes[Global].location.pathname,"path");
 
-  const onRefresh = () => {
-    setrefreshing(true);
-    refetch();
-    setrefreshing(false);
-  };
 
+  const params =  useLocalSearchParams();
+  
+  const { data, isLoading, error, refetch } = useFetch("job-details", { job_id: params.id });
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    refetch()
+    setRefreshing(false)
+  }, []);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -82,18 +79,41 @@ const JobDetails = () => {
                 setActiveTab={setActiveTab}
               />
 
-            {
-              activeTab === "Sobre" ? (
-                <Text>x</Text>): activeTab === "Requisitos" ? (
-                  <Specifics
+              {activeTab === "Sobre" ? (
+                <About info={data[0].job_description ?? "Sem informação"} />
+              ) : activeTab === "Requisitos" ? (
+                <Specifics
                   title={"Requisitos"}
-                  points={data[0].job_highlights?.Qualifications ?? ['N/A']}
-                  
-                  /> ) : <Text>xs</Text>
-            }
+                  points={
+                    data[0].job_highlights?.Qualifications ?? ["Sem informação"]
+                  }
+                />
+              ) : activeTab === "Dia-a-dia" ? (
+                <Specifics
+                  title="Dia-a-dia"
+                  points={
+                    data[0].job_highlights?.Responsibilities ?? [
+                      "Sem informação",
+                    ]
+                  }
+                />
+              ) : (
+                <Specifics
+                  title={"Benifícios"}
+                  points={
+                    data[0].job_highlights?.Benefits ?? ["Sem informação"]
+                  }
+                />
+              )}
             </View>
           )}
         </ScrollView>
+        <Footer
+          url={
+            data[0]?.job_google_link ??
+            "https://careers.google.com/jobs/results/"
+          }
+        />
       </>
     </SafeAreaView>
   );

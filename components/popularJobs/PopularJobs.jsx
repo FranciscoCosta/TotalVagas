@@ -6,7 +6,7 @@ import { useRouter } from "expo-router";
 import styles from "./popularjobs.style";
 import { Popularjobcard } from "../index";
 import { COLORS , SIZES } from "../../constants/index";
-import { ActivityIndicator } from "react-native-web";
+import { ActivityIndicator } from "react-native";
 
 import useFetch from '../../hook/useFetch';
 

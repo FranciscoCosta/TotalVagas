@@ -6,7 +6,7 @@ import { useRouter } from "expo-router";
 import styles from "./nearbyjobs.style";
 import { Nearbyjobcard } from "../index";
 import { COLORS, SIZES } from "../../constants/index";
-import { ActivityIndicator } from "react-native-web";
+import { ActivityIndicator } from "react-native";
 
 import useFetch from '../../hook/useFetch';
 
@@ -37,7 +37,7 @@ const NearbyJobs = () => {
                             <Nearbyjobcard
                                 job={job}
                                 key={`nearbyjob-${job?.job_id}`}
-                                handleNavigate={() => router.push(`/job-details/${job?.job_id}`)}
+                                handleNavigate={() => router.push(`/job-details/${job.job_id}`)}
                             />
                         ))
                     ))}

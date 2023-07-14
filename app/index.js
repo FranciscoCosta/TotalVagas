@@ -9,6 +9,7 @@ import { ScreenHeaderBtn, Hero, PopularJobs, NearbyJobs } from "../components/in
 
 const Home = () => {
   const router = useRouter();
+  
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
