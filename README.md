@@ -2,6 +2,10 @@
 <body>
   <h1>TotalVagas - Aplicativo de Pesquisa de Emprego</h1>
 
+  <h2>Video da aplicação rodando.</h2>
+
+  <a href = "https://www.linkedin.com/feed/update/urn:li:activity:7085639230470656000/" >Total vagas Video</a>
+
   <h2>Recursos Principais</h2>
   <ul>
     <li>Pesquisa de Vagas: O usuário pode inserir consultas de pesquisa, como "Desenvolvedor React Junior", para encontrar vagas específicas de acordo com suas preferências.</li>
